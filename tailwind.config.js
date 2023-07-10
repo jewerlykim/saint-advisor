@@ -31,6 +31,11 @@ module.exports = {
         },
       },
       fontFamily: {
+        'gowun-dodum': [
+          '"Gowun Dodum"',
+          "sans-serif"
+        ]
+        ,
         body: [
           "Inter",
           "ui-sans-serif",
