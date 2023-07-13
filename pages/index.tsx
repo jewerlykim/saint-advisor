@@ -34,7 +34,7 @@ export default function Web() {
       return;
     }
 
-    const length_limit = 100;
+    const length_limit = 200;
     if (concern.length > length_limit) {
       toast.error(`${length_limit.toString()}자 이내로 입력해주세요.`, {
         position: "bottom-right",
@@ -46,25 +46,11 @@ export default function Web() {
       return;
     }
 
+    // advice router로 이동
+    router.push(`/advice?concern=${encodeURIComponent(concern)}`)
 
-    // const eventSource = new EventSource(
-    //   `http://localhost:8000/getAdvice/${encodeURIComponent(concern)}`, { withCredentials: true });
 
 
-    // eventSource.addEventListener("message", (event: any) => {
-    //   setAdvice((prevState) => {
-    //     return prevState + event.data
-    //   })
-    // });
-
-    // eventSource.addEventListener("error", (event: any) => {
-    //   console.log(event);
-    //   eventSource.close();
-    // });
-
-    // eventSource.addEventListener("open", (event: any) => {
-    //   console.log(event);
-    // });
 
 
 
@@ -72,10 +58,8 @@ export default function Web() {
 
 
   const handleKeyPress = (event: { key: string; }) => {
-    // alert("엔터키 눌림");
     if (event.key === "Enter") {
-      alert("엔터키 눌림");
-      // handleSubmit();
+      handleSubmit();
     }
   };
 
@@ -86,25 +70,12 @@ export default function Web() {
 
   return (
     <>
-      <Head>
-        <meta property="og:url" content="https://next-enterprise.vercel.app/" />
-        <meta
-          property="og:image"
-          content="https://github.com/jewerlykim/jewel-blog/assets/75651834/9e699ea1-8a28-401f-9657-f6edcf3b08c9"
-        />
-        <meta property="og:image:width" content="640" />
-        <meta property="og:image:height" content="640" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair+Display&display=swap" rel="stylesheet" />
-        <title>천상의 조언</title>
-      </Head>
+
       <main className="flex items-center justify-center h-screen bg-center bg-no-repeat bg-cover bg-[#0D121A]" style={{ backgroundImage: "url('background_up.png')" }}>
         <div className="w-full h-full bg-black bg-opacity-50 flex flex-col justify-center items-center">
           <h1 className="h-[182px] font-gowun-dodum sm:text-[100px] text-[75px] text-center text-white tracking-[-6px] drop-shadow">천상의 조언</h1>
 
-          <form onSubmit={handleSubmit} className="items-center justify-center">
+          <form onSubmit={handleSubmit} className="items-center justify-center" onKeyUp={handleKeyPress} >
             <input
               className="md:w-[880px] sm:w-[440px] w-screen h-[72px] rounded-[45px] border-2 border-white bg-black bg-opacity-[63%] text-white text-center tracking-[2px] font-gowun-dodum sm:text-[35px] text-[20px] placeholder:text-[#F5F5F5] placeholder:opacity-[50%] focus:outline-none focus:border-[#F5F5F5] focus:placeholder-opacity-[0%]"
               type="text"
@@ -113,6 +84,7 @@ export default function Web() {
               onChange={handleConcernChange}
             >
             </input>
+            <input type="text" className="hidden" />
 
           </form>
           <button onClick={handleSubmit} className="text-white w-[100px] h-[50px] border-2 border-white bg-black bg-opacity-[70%] rounded-[20px] text-[20px] mt-3 flex items-center justify-center hover:bg-opacity-80 transition-all duration-200 ease-in-out">
@@ -145,7 +117,7 @@ export default function Web() {
 
         </div>
 
-      </main>
+      </main >
 
 
     </>

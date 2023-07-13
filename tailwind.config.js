@@ -29,13 +29,11 @@ module.exports = {
           800: "#1e40af",
           900: "#1e3a8a",
         },
+        gold: "#ffd700",
       },
       fontFamily: {
-        'gowun-dodum': [
-          '"Gowun Dodum"',
-          "sans-serif"
-        ]
-        ,
+        "gowun-dodum": ['"Gowun Dodum"', "sans-serif"],
+        "do-hyeon": ['"Do Hyeon"', "sans-serif"],
         body: [
           "Inter",
           "ui-sans-serif",
